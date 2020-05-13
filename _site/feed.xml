@@ -1,5 +1,168 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/kong-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/kong-blog/" rel="alternate" type="text/html" /><updated>2020-04-21T19:04:57+08:00</updated><id>http://localhost:4000/kong-blog/feed.xml</id><title type="html">My personal blog - Jessica Kong</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</subtitle><author><name>Jessica Kong</name></author><entry><title type="html">I conquer the Himalayas</title><link href="http://localhost:4000/kong-blog/i-conquer-the-himalayas/" rel="alternate" type="text/html" title="I conquer the Himalayas" /><published>2017-08-25T18:32:20+08:00</published><updated>2017-08-25T18:32:20+08:00</updated><id>http://localhost:4000/kong-blog/i-conquer-the-himalayas</id><content type="html" xml:base="http://localhost:4000/kong-blog/i-conquer-the-himalayas/">&lt;p&gt;Vaporware snackwave stumptown, small batch tattooed try-hard prism fanny pack 3 wolf moon edison bulb tofu hot chicken vice. Selvage iPhone hell of tote bag seitan organic PBR&amp;amp;B williamsburg palo santo tousled fanny pack pinterest normcore. Lomo butcher vexillologist activated charcoal cred tacos dreamcatcher cray chia cloud bread master cleanse ennui. Copper mug hella iceland occupy venmo. Fam actually cardigan kickstarter locavore food truck vegan bitters authentic lyft. Vaporware listicle keffiyeh adaptogen. Cloud bread stumptown swag la croix polaroid pickled. Next level yuccie four dollar toast polaroid. Portland chicharrones craft beer helvetica 3 wolf moon.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2020-05-13T13:06:02+08:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">My personal blog - Jessica Kong</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><author><name>Jessica Kong</name></author><entry><title type="html">论文阅读笔记（1）——Real-Time User-Guided Image Colorization with Learned Deep Priors</title><link href="http://localhost:4000/blog/the-forest-in-the-fog/" rel="alternate" type="text/html" title="论文阅读笔记（1）——Real-Time User-Guided Image Colorization with Learned Deep Priors" /><published>2020-03-23T18:32:20+08:00</published><updated>2020-03-23T18:32:20+08:00</updated><id>http://localhost:4000/blog/the-forest-in-the-fog</id><content type="html" xml:base="http://localhost:4000/blog/the-forest-in-the-fog/">&lt;p&gt;摘  要	
+      论文主要介绍利用深度学习以用户引导方式为黑白图像进行实时上色的模型，无需进行大量的用户输入，只需给定一张灰度图像和稀疏的局部用户提示点，将它们映射到卷积神经网络（CNN），即可得到输出的颜色分布结果。与使用手工定义的规则不同，网络通过融合从大规模数据中学习到的具有高水平语义信息的低水平线索来传播。系统还会根据输入图像和用户的输入提出相应着色建议，提供着色提示项。此外，使用随机模拟的输入信息，推荐系统可以帮助一名新用户快速对图片进行逼真的着色，系统还展示了利用有色图片进行风格转换的能力。&lt;/p&gt;
+
+&lt;p&gt;关键词	黑白图像；实时上色；用户引导：数据驱动；&lt;/p&gt;
+
+&lt;p&gt;1引言&lt;/p&gt;
+
+&lt;p&gt;我们所读论文中的上色技术主要是基于计算机图形学中用户引导的编辑传播技术和数据驱动的自动着色技术。&lt;/p&gt;
+
+&lt;p&gt;1.1 用户指导着色&lt;/p&gt;
+
+&lt;p&gt;用户引导的编辑传播技术是由 Levin 等人在 2004 年开创的，主要集中在局部控制上，用户在灰度图像上绘制彩色笔画，优化过程生成与用户的涂鸦相匹配的彩色图像，这种方法可以保留人工上色的部分性质，大部分情况下会有绝佳的表现，但往往需要密集的用户交互，（由于笔划是低级的相似性度量），系统完全依赖于用户对颜色的输入。后来人们开始探索是否有更高级别的相似性度量从而减少交互次数（Luan等人2007年；Qu等人2006年）。神经网络（Endo等人2016），被提议自动学习给定用户笔划和输入图像的像素之间的相似性。除了局部控制，改变颜色主题（Li等人2015年；Wang等人2010）和调色板（Chang等人2015）是表达全局控制的常用方法。论文表明可以将全局提示集成到网络中，并通过改变颜色分布和平均饱和度来控制着色结果。&lt;/p&gt;
+
+&lt;p&gt;1.2 数据驱动自动着色&lt;/p&gt;
+
+&lt;p&gt;对于数据驱动的自动着色技术，主要有：1.将其与数据库中的示例彩色图像匹配2.非参数化地“窃取”照片中的颜色。这是其实是图像模拟的想法（Hertzmann等人于2001年提出），或者通过从大规模图像数据中学习从灰度到颜色的参数映射（Iizuka等人提出的最新方法2016，拉尔森等人2016），但结果往往包含错误的颜色，明显的人工制品或者伪影。对于图像模拟思想来说，这其实是一种半自动的着色方法，查找参考图像十分费时，并且对于一些稀有物品或复杂场景来说也很有挑战性，大多数时候需要人工指定。而对于从灰度到颜色的参数映射，这其实是一种全自动的着色方法，也能产生真实的上色结果，但当前的自动方法旨在选择单一的着色，并且不允许用户指定。&lt;/p&gt;
+
+&lt;p&gt;1.3 论文着色方法&lt;/p&gt;
+
+&lt;p&gt;基于上述两种方法，论文尝试利用大量的数据来学习自然色彩图像的先验知识，同时结合传统编辑传播框架中的用户引导，从而获得两者的最佳结合。&lt;/p&gt;
+
+&lt;p&gt;论文建议训练 CNN 直接将灰度图像以及稀疏用户输入映射到输出着色，训练期间随机模拟用户输入，不同之处在于学习了交互的效果，正因如此，即使使用界面进行最少的培训，并且对图像着色的时间有限（1分钟），新手用户也可以快速学习生成着色，这些颜色通常可以欺骗真正的人工评委。虽然系统是经过自然图像训练的，但它也可以产生不寻常的着色。论文的工作主要通过学习以端到端(end-to-end，用户输入到结果输出)的方式集成输入提示，从大规模数据中传播稀疏用户点，采用深层语义图像编辑的思想以保证交互次数尽可能的少，巴恩斯等人（2009）强调控制和交互性是图像编辑的关键，因为用户的介入不仅可以纠正错误，还可以帮助探索创意图像处理的广阔设计空间。论文将这一概念融入到一个直观的界面中，该界面提供了表达性的控件和实时反馈信息，为了引导用户做出明智的决策，提供数据驱动的调色板，用于在任何给定位置推荐最可能的颜色。此框架并不限于用户点，原则上可以使用输出的任何统计信息（例如，全局颜色分布或平均图像饱和度）进行培训。&lt;/p&gt;
+
+&lt;p&gt;2论文理解&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/readnote_1/colorization.jpg&quot; alt=&quot;Yosh Ginsu&quot; /&gt;
+如图所示论文中训练了两种变体的用户交互着色网络，都使用蓝色图层来预测着色。局部提示网络使用红色图层合并用户点 Ul 来预测颜色分布 Z’。全局提示网络使用绿色图层，该图层将全局输入 Ug 转换为 1 × 1 conv 图层，并将结果添加到主着色网络中。每个框表示一个 conv 图层，垂直尺寸表示feature map空间分辨率，水平尺寸指示feature通道数。分辨率的变化是通过子采样和向上采样操作实现的。在主网络中，当分辨率降低时，功能通道的数量会加倍。快捷连接添加到上采样卷积层。&lt;/p&gt;
+
+&lt;p&gt;2.1学习着色&lt;/p&gt;
+
+&lt;p&gt;网络的主要分支F使用U-Net体系结构（Ronneberger等人2015年），一种编码解码结构，它已经被证明能很好地处理各种条件生成任务（Isola等人。2017年）。论文还利用了（Simonyan和Zisserman 2014）和（Yu和Koltun 2016）的设计原则。
+该网络由10个卷积块conv1-10构成。在conv1-4中，在每个块中，特征张量在空间上逐步减半，而在特征维数上加倍。每个块包含2-3个conv relu对。在下半部分conv7-10中，恢复了空间分辨率，同时将特征维数减半。在块conv5-6中，使用因子2的扩展卷积，而不是将空间分辨率减半。这对每个单元相对于输入像素的接收场具有相同的影响，但允许网络在瓶颈中保留附加信息。 
+添加对称快捷连接以帮助网络恢复空间信息（Ronneberger等人。2015年）。例如，conv2和conv3块分别连接到conv8和conv9块。这也使得以后的层能够容易地访问重要的低级信息；例如，亮度值将限制ab色域的范围。空间分辨率的变化是通过子采样或上采样操作实现的，每个卷积使用3×3核。在每个卷积块之后添加BatchNorm层，进行数据的归一化处理，避免数据过大导致网络不稳定。Zhang等人使用了论文网络架构的一个子集，即没有快捷连接的conv1-8（2016年）。对于这些层，从这些预先训练的权重进行微调。添加的conv9、conv10层和快捷连接是从头开始训练的。最后一个conv层是1×1内核，它在conv10和输出颜色之间映射。因为ab色域是有界的，所以论文在输出端添加一个最后的tanh层，这是生成图像时的常见做法（Goodfellow等人。2014年；Zhu等人。2016年）。&lt;/p&gt;
+
+&lt;p&gt;算法1.  着色算法.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;输入：H&lt;em&gt;W&lt;/em&gt;1的灰度图像和一个用户张量U&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;输出：H×W×2的图像ab色通道的估计&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;灰度图像是CIE-Lab颜色空间中的L或亮度通道，使用CNN-F学习映射，参数化为θ。论文训练网络使方程1中的目标函数最小化，D表示灰度图像、用户输入和期望输出颜色的数据集。损失函数L描述了网络输出与实际情况的接近程度。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/readnote_1/com_1.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;算法2.  损失计算&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;输入：单一像素点与对应的ground truth监督（x,y）&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;输出：每个像素点上的损耗，加和后得到整个图像的损耗&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;论文使用方程式4中所述的smooth-l1（或Huber）损失。在局部提示网络中，从用户体验的角度来看，发现从一个保守的着色开始并允许用户注入所需的颜色让用户修复错误，而不是从一个更有活力但容易产生伪影的设置开始。这个问题的许多模态模糊性都可以通过用户点击几下快速解决。在存在模糊性的情况下，smooth-l1也是一个稳健估计（Huber 1964），这有助于避免平均问题。此外，使用等式4中描述的δ=1的回归损失，使我们能够在没有固定推理步骤的情况下执行端到端学习。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/readnote_1/com_2.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;
+&lt;img src=&quot;/blog/assets/img/readnote_1/com_3.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;过程1.  用户输入生成&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;训练网络的两个变种，局部用户提示 Ul 和全局用户提示Ug。在训练期间，提示是通过分别使用函数 Pl 和 Pg为网络提供真实图像色彩 Y 的小暗示（peek）来生成的。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;输出：Ul，Ug&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/readnote_1/process_1.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;过程2.  局部/全局提示网络最小化&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;由于使用函数 Pl、Pg来合成生成用户输入，因此数据集只需要包含灰度和彩色图像。此处使用1.3M ImageNet数据集(Russakovskyetal.2015).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;输出：θl∗，θд∗&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/readnote_1/process_2.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.2局部提示网络&lt;/p&gt;
+
+&lt;p&gt;局部提示网络使用稀疏用户点作为输入。论文描述了输入、如何模拟用户点以及用户界面的功能。稀疏的用户点通过与输入的灰度图像拼接而集成。预测颜色分布的任务与预测单一颜色化的任务相关，因此论文重用来自主要分支的特征。使用超列方法（Hariharan等人2015年；Larsson等人2016）通过连接来自主分支多个层的特征，并在顶部学习两层分类器。网络总帐由主分支组成，最多可达conv8，以及此侧分支。副任务不应该影响主任务的表示，因此不会将副任务的梯度反向传播到主分支。为了节省计算量，论文在四分之一分辨率下预测分布，并应用双线性上采样在全分辨率下进行预测。&lt;/p&gt;
+
+&lt;p&gt;2.2.1系统输入
+用户提供点的ab值稀疏张量Xab∈H×W×2和表示用户提供点的二进制掩码Bab∈H×W×1，这些张量共同构成输入张量Ul={Xab，Bab}∈H×W×3。
+掩码用（a，b）=0区分未指定点和用户指定的灰色点。&lt;/p&gt;
+
+&lt;p&gt;2.2.2模拟用户交互
+训练深层网络的一个挑战是收集训练数据。虽然自动着色的数据很容易获得——任何彩色图像都可以分解成其颜色和灰度成分，但获取用户交互数据的适当机制远不那么明显。论文发现即使通过随机从彩色图中采样彩色点，也能充分覆盖输入空间，训练一个有效的系统。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/readnote_1/gaosi.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;论文对small patch进行采样，并向网络显示平均patch颜色。对于每个图像，点的数量是从p=1/8的几何分布中提取的。每个点的位置都是从二维高斯分布中抽取的，因此希望用户更多地点击图像中心的点。揭示的patch大小从1×1到9×9均匀地绘制，patch内的平均ab向网络揭示。最后，需要正确的限制特性-给定用户的所有点，网络应该简单地将颜色从输入复制到输出。为了鼓励这一点，论文为1%的训练实例提供了原始彩色图。尽管网络应该隐式地学习将任何提供的用户点复制到输出，但是没有明显的约束要求网络做到精确复制。而且投影函数Pl（Y）的这些设计决策最初是基于直觉选择的，发现它们对结果有促进方面，但没有得到很好的调整。&lt;/p&gt;
+
+&lt;p&gt;2.2.3 数据驱动调色板&lt;/p&gt;
+
+&lt;p&gt;对于每个像素，论文预测了输出颜色Z∈H×W×Q上的概率分布，其中Q是量化颜通道的数量，Z为一个颜色分布编码，使用了来自Zhang等人（2016）的CIE实验室颜色空间的参数化—ab空间分为10×10个通道，Q=313个箱子保存在色域内。用Gl网络学习输入灰度图像和用户点到预测颜色分布Z’的映射，并用Ψl参数化，Z是Y用软编码方案（Zhang等人2016）形成的颜色编码—真实ab颜色值表示为其10个最近的bin中心的凸组合，由σ=5的高斯核加权。对每个像素使用交叉熵损失函数来测量预测的和真实图之间的距离，并对所有像素求和。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/readnote_1/com_4.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.3全局提示网络&lt;/p&gt;
+
+&lt;p&gt;端到端学习框架可以很容易地适应不同类型的用户输入。论文展示了一个用例，其中用户提供全局统计信息，用全局直方图Xhist∈Q和平均图像饱和度Xsat∈[0，1]来描述。是否提供输入分别由指标变量Bhist，Bsat∈B表示。用户对系统的输入是：Uün={Xhist，Bhist，Xsat，Bsat}大小为1×1×（Q+3）。论文使用双线性插值将颜色Y的分辨率调整为四分之一，在量化ab空间中对每个像素进行编码，并在空间上进行平均，从而计算出全局直方图。通过将地面真值图像转换为HSV颜色空间（色调、饱和度、明度）并在S通道上进行空间平均来计算饱和度。在训练过程中，随机地向网络揭示了地面真值的颜色分布、地面真值的饱和度。&lt;/p&gt;
+
+&lt;p&gt;由于全局输入没有空间信息，论文将信息集成到主着色网络的中间。如图1顶部绿色分支所示，输入通过4个conv relu层进行处理，每个层的内核大小为1×1和512个通道。该特征映射在空间上重复以匹配主分支中conv4特征的大小H/8×W/8×512，并通过求和合并。&lt;/p&gt;
+
+&lt;p&gt;3实验及结果分析&lt;/p&gt;
+
+&lt;p&gt;3.1数据集&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;1.3M ImageNet 数据集（Russakovsky 等人，2015 年）&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3.2编程语言&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Python 2 or 3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3.3工具包&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Torch&amp;gt;=0.4.0
+Torchvision&amp;gt;=0.2.1
+Dominate&amp;gt;=2.3.1
+Visdom&amp;gt;=0.1.8.3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3.4结果分析
+&lt;img src=&quot;/blog/assets/img/readnote_1/exp_1.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;
+&lt;img src=&quot;/blog/assets/img/readnote_1/exp_2.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;
+&lt;img src=&quot;/blog/assets/img/readnote_1/exp_3.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;
+&lt;img src=&quot;/blog/assets/img/readnote_1/exp_4.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3.4.1 论文优点&lt;/p&gt;
+
+&lt;p&gt;网络根据学习到的语义相似度预测用户的预期行为。系统可以能够为遗留照片着色；网络已经学会了如何融合全局统计信息，可以实现类似风格转换的效果；在没有附近用户输入的情况下，网络将尝试基于训练语料库为对象找到合适的颜色。但一旦用户提供了输入，系统就会用所需的颜色填充该段；论文系统可以帮助新用户在一分钟内生成尽可能真实的色彩。&lt;/p&gt;
+
+&lt;p&gt;3.4.2论文局限性&lt;/p&gt;
+
+&lt;p&gt;网络也可能过于乐观，产生不期望的非局部效应。1.添加在前景对象上的点可能会导致背景发生不希望的更改，论文认为从定性角度增加一些控制点可以解决问题。2.网络也可能无法完全传播用户点，在这些情况下，用户可以使用其他输入填充区域。3.对于分割边界困难的场景，用户有时需要通过密集地标记两边来显式地定义边界。系统可以持续地整合这些信息，即使有数百个输入点，当系统底层分割不好时，可以添加点来修复颜色溢出伪影。4.系统目前是在点上训练的，在这种情况下，随机抽样覆盖低维工作空间的效果出奇地好。&lt;/p&gt;
+
+&lt;p&gt;3.4.3 我的复现&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/readnote_1/fuxian.png&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;论文: &lt;a href=&quot;https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1705.02999.pdf&quot;&gt;Paper&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;论文代码: &lt;a href=&quot;https://github.com/junyanz/interactive-deep-colorization&quot;&gt;Code&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;论文作者项目主页: &lt;a href=&quot;https://richzhang.github.io/ideepcolor/&quot;&gt;Project&lt;/a&gt;&lt;/p&gt;</content><author><name>Kong Qing and Wang Xiao# Add name author (optional)</name></author><category term="Readnote" /><category term="colorization" /><summary type="html">摘 要 论文主要介绍利用深度学习以用户引导方式为黑白图像进行实时上色的模型，无需进行大量的用户输入，只需给定一张灰度图像和稀疏的局部用户提示点，将它们映射到卷积神经网络（CNN），即可得到输出的颜色分布结果。与使用手工定义的规则不同，网络通过融合从大规模数据中学习到的具有高水平语义信息的低水平线索来传播。系统还会根据输入图像和用户的输入提出相应着色建议，提供着色提示项。此外，使用随机模拟的输入信息，推荐系统可以帮助一名新用户快速对图片进行逼真的着色，系统还展示了利用有色图片进行风格转换的能力。</summary></entry><entry><title type="html">I conquer the Himalayas</title><link href="http://localhost:4000/blog/i-conquer-the-himalayas/" rel="alternate" type="text/html" title="I conquer the Himalayas" /><published>2017-08-25T18:32:20+08:00</published><updated>2017-08-25T18:32:20+08:00</updated><id>http://localhost:4000/blog/i-conquer-the-himalayas</id><content type="html" xml:base="http://localhost:4000/blog/i-conquer-the-himalayas/">&lt;p&gt;Vaporware snackwave stumptown, small batch tattooed try-hard prism fanny pack 3 wolf moon edison bulb tofu hot chicken vice. Selvage iPhone hell of tote bag seitan organic PBR&amp;amp;B williamsburg palo santo tousled fanny pack pinterest normcore. Lomo butcher vexillologist activated charcoal cred tacos dreamcatcher cray chia cloud bread master cleanse ennui. Copper mug hella iceland occupy venmo. Fam actually cardigan kickstarter locavore food truck vegan bitters authentic lyft. Vaporware listicle keffiyeh adaptogen. Cloud bread stumptown swag la croix polaroid pickled. Next level yuccie four dollar toast polaroid. Portland chicharrones craft beer helvetica 3 wolf moon.&lt;/p&gt;
 
 &lt;p&gt;Fanny pack wolf asymmetrical PBR&amp;amp;B activated charcoal chia retro iPhone. Everyday carry artisan live-edge bespoke ramps. Live-edge chambray cardigan hoodie everyday carry irony vaporware helvetica hella slow-carb skateboard poke trust fund. Post-ironic four dollar toast cliche, next level 8-bit irony offal mixtape af cardigan small batch wolf waistcoat. Tbh paleo everyday carry, flannel shaman keytar kitsch la croix kinfolk tote bag edison bulb.&lt;/p&gt;
 
@@ -9,21 +172,9 @@
 
 &lt;p&gt;Taxidermy shaman irony williamsburg bespoke. Freegan ugh mumblecore selfies, shabby chic neutra everyday carry. Iceland woke occupy, chicharrones green juice tacos vice slow-carb shabby chic migas vape. Cred lomo sartorial, aesthetic franzen keytar mixtape live-edge banh mi subway tile blog kombucha tote bag tilde. Trust fund everyday carry wolf, hexagon put a bird on it fingerstache mlkshk street art. Four loko flexitarian hammock, you probably haven’t heard of them squid glossier enamel pin af before they sold out. Jianbing narwhal chartreuse helvetica 3 wolf moon quinoa. 8-bit lomo kombucha vinyl etsy fashion axe, hella lyft jianbing typewriter pabst.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/kong-blog/assets/img/yosh-ginsu.jpg&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/yosh-ginsu.jpg&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;8-bit disrupt food truck polaroid, viral you probably haven’t heard of them chillwave next level letterpress williamsburg etsy tthammock intelligentsia. Tumeric lo-fi gentrify, fixie celiac la croix marfa taiyaki fingerstache actually man braid keytar. Brunch coloring book succulents church-key umami affogato. Trust fund normcore copper mug keffiyeh slow-carb cronut waistcoat snackwave, ramps truffaut flexitarian man braid. Celiac flexitarian authentic hashtag wayfarers. Next level pitchfork scenester godard. Salvia etsy edison bulb knausgaard poke jianbing actually. Mlkshk retro cardigan photo booth swag. Occupy shaman austin, meditation green juice flannel succulents twee. Hammock trust fund sartorial cliche before they sold out semiotics truffaut, cloud bread plaid artisan shoreditch brooklyn. Shoreditch air plant asymmetrical DIY. Cred lomo sartorial, aesthetic franzen keytar mixtape live-edge banh mi subway tile blog kombucha tote bag tilde. Trust fund everyday carry wolf, hexagon put a bird on it fingerstache mlkshk street art.&lt;/p&gt;</content><author><name>Adam Neilson</name></author><category term="Blog" /><category term="Mountains" /><summary type="html">Vaporware snackwave stumptown, small batch tattooed try-hard prism fanny pack 3 wolf moon edison bulb tofu hot chicken vice. Selvage iPhone hell of tote bag seitan organic PBR&amp;amp;B williamsburg palo santo tousled fanny pack pinterest normcore. Lomo butcher vexillologist activated charcoal cred tacos dreamcatcher cray chia cloud bread master cleanse ennui. Copper mug hella iceland occupy venmo. Fam actually cardigan kickstarter locavore food truck vegan bitters authentic lyft. Vaporware listicle keffiyeh adaptogen. Cloud bread stumptown swag la croix polaroid pickled. Next level yuccie four dollar toast polaroid. Portland chicharrones craft beer helvetica 3 wolf moon.</summary></entry><entry><title type="html">I meet the sunset</title><link href="http://localhost:4000/kong-blog/i-meet-the-sunset/" rel="alternate" type="text/html" title="I meet the sunset" /><published>2017-08-24T18:32:20+08:00</published><updated>2017-08-24T18:32:20+08:00</updated><id>http://localhost:4000/kong-blog/i-meet-the-sunset</id><content type="html" xml:base="http://localhost:4000/kong-blog/i-meet-the-sunset/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Jessica Kong</name></author><category term="Blog" /><category term="Sunset" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">On a meeting with adventures</title><link href="http://localhost:4000/kong-blog/meeting-with-adventures/" rel="alternate" type="text/html" title="On a meeting with adventures" /><published>2017-08-23T18:32:20+08:00</published><updated>2017-08-23T18:32:20+08:00</updated><id>http://localhost:4000/kong-blog/meeting-with-adventures</id><content type="html" xml:base="http://localhost:4000/kong-blog/meeting-with-adventures/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;p&gt;8-bit disrupt food truck polaroid, viral you probably haven’t heard of them chillwave next level letterpress williamsburg etsy tthammock intelligentsia. Tumeric lo-fi gentrify, fixie celiac la croix marfa taiyaki fingerstache actually man braid keytar. Brunch coloring book succulents church-key umami affogato. Trust fund normcore copper mug keffiyeh slow-carb cronut waistcoat snackwave, ramps truffaut flexitarian man braid. Celiac flexitarian authentic hashtag wayfarers. Next level pitchfork scenester godard. Salvia etsy edison bulb knausgaard poke jianbing actually. Mlkshk retro cardigan photo booth swag. Occupy shaman austin, meditation green juice flannel succulents twee. Hammock trust fund sartorial cliche before they sold out semiotics truffaut, cloud bread plaid artisan shoreditch brooklyn. Shoreditch air plant asymmetrical DIY. Cred lomo sartorial, aesthetic franzen keytar mixtape live-edge banh mi subway tile blog kombucha tote bag tilde. Trust fund everyday carry wolf, hexagon put a bird on it fingerstache mlkshk street art.&lt;/p&gt;</content><author><name>Adam Neilson</name></author><category term="Blog" /><category term="Mountains" /><summary type="html">Vaporware snackwave stumptown, small batch tattooed try-hard prism fanny pack 3 wolf moon edison bulb tofu hot chicken vice. Selvage iPhone hell of tote bag seitan organic PBR&amp;amp;B williamsburg palo santo tousled fanny pack pinterest normcore. Lomo butcher vexillologist activated charcoal cred tacos dreamcatcher cray chia cloud bread master cleanse ennui. Copper mug hella iceland occupy venmo. Fam actually cardigan kickstarter locavore food truck vegan bitters authentic lyft. Vaporware listicle keffiyeh adaptogen. Cloud bread stumptown swag la croix polaroid pickled. Next level yuccie four dollar toast polaroid. Portland chicharrones craft beer helvetica 3 wolf moon.</summary></entry><entry><title type="html">I meet the sunset</title><link href="http://localhost:4000/blog/i-meet-the-sunset/" rel="alternate" type="text/html" title="I meet the sunset" /><published>2017-08-24T18:32:20+08:00</published><updated>2017-08-24T18:32:20+08:00</updated><id>http://localhost:4000/blog/i-meet-the-sunset</id><content type="html" xml:base="http://localhost:4000/blog/i-meet-the-sunset/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
@@ -35,7 +186,7 @@
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Jessica Kong</name></author><category term="Blog" /><category term="Sunset" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Snowboarding and my life</title><link href="http://localhost:4000/kong-blog/snowboarding-and-my-life/" rel="alternate" type="text/html" title="Snowboarding and my life" /><published>2017-08-22T18:32:20+08:00</published><updated>2017-08-22T18:32:20+08:00</updated><id>http://localhost:4000/kong-blog/snowboarding-and-my-life</id><content type="html" xml:base="http://localhost:4000/kong-blog/snowboarding-and-my-life/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Jessica Kong</name></author><category term="Blog" /><category term="Sunset" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">On a meeting with adventures</title><link href="http://localhost:4000/blog/meeting-with-adventures/" rel="alternate" type="text/html" title="On a meeting with adventures" /><published>2017-08-23T18:32:20+08:00</published><updated>2017-08-23T18:32:20+08:00</updated><id>http://localhost:4000/blog/meeting-with-adventures</id><content type="html" xml:base="http://localhost:4000/blog/meeting-with-adventures/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
@@ -47,7 +198,7 @@
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Jessica Kong</name></author><category term="Blog" /><category term="Mountains" /><category term="Sport" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Time to think</title><link href="http://localhost:4000/kong-blog/time-to-think/" rel="alternate" type="text/html" title="Time to think" /><published>2017-08-21T18:32:20+08:00</published><updated>2017-08-21T18:32:20+08:00</updated><id>http://localhost:4000/kong-blog/time-to-think</id><content type="html" xml:base="http://localhost:4000/kong-blog/time-to-think/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Jessica Kong</name></author><category term="Blog" /><category term="Sunset" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Snowboarding and my life</title><link href="http://localhost:4000/blog/snowboarding-and-my-life/" rel="alternate" type="text/html" title="Snowboarding and my life" /><published>2017-08-22T18:32:20+08:00</published><updated>2017-08-22T18:32:20+08:00</updated><id>http://localhost:4000/blog/snowboarding-and-my-life</id><content type="html" xml:base="http://localhost:4000/blog/snowboarding-and-my-life/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
@@ -59,7 +210,7 @@
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Jessica Kong</name></author><category term="Blog" /><category term="Meditation" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">The forest in the fog</title><link href="http://localhost:4000/kong-blog/the-forest-in-the-fog/" rel="alternate" type="text/html" title="The forest in the fog" /><published>2017-08-20T18:32:20+08:00</published><updated>2017-08-20T18:32:20+08:00</updated><id>http://localhost:4000/kong-blog/the-forest-in-the-fog</id><content type="html" xml:base="http://localhost:4000/kong-blog/the-forest-in-the-fog/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Jessica Kong</name></author><category term="Blog" /><category term="Mountains" /><category term="Sport" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Time to think</title><link href="http://localhost:4000/blog/time-to-think/" rel="alternate" type="text/html" title="Time to think" /><published>2017-08-21T18:32:20+08:00</published><updated>2017-08-21T18:32:20+08:00</updated><id>http://localhost:4000/blog/time-to-think</id><content type="html" xml:base="http://localhost:4000/blog/time-to-think/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
